@@ -1,0 +1,13 @@
+Version 2009040201
+- Make it work with Lingua::EN::Numbers 1.01.
+- Move Easy.pm to /lib.
+- Move tests to /t
+- Make Lingua::EN::Numbers a pre-req.
+- Document.
+----
+Revision 1.2  1999/11/07 15:17:34  abigail
+Worked around a bug (0 -> 'zero') in Lingua::EN::Numbers.
+----
+Revision 1.1  1999/11/07 14:59:14  abigail
+Initial revision
+----
