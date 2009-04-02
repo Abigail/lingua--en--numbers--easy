@@ -1,0 +1,4 @@
+.gitignore
+.git
+Releases
+MANIFEST.SKIP

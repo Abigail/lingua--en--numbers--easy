@@ -1,0 +1,4 @@
+lib/Lingua/EN/Numbers/Easy.pm
+MANIFEST
+Makefile.PL
+t/000_tests.t
