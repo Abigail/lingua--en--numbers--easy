@@ -5,7 +5,7 @@ WriteMakefile(
     NAME 	  => 'Lingua::EN::Numbers::Easy',
     VERSION_FROM  => 'lib/Lingua/EN/Numbers/Easy.pm', # finds $VERSION
     PREREQ_PM     => {
-        'Lingua::EN::Numbers' => 0
+        'Lingua::EN::Numbers' => 1.01,
     },
     AUTHOR        => 'Abigail <lingua-en-numbers-easy@abigail.be>',
 );

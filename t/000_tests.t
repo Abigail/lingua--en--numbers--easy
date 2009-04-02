@@ -6,7 +6,7 @@
 # Change 1..1 below to 1..last_test_to_print .
 # (It may become useful if the test is moved to ./t subdirectory.)
 
-BEGIN { $| = 1; print "1..1\n"; }
+BEGIN { $| = 1; print "1..3\n"; }
 END {print "not ok 1\n" unless $loaded;}
 use Lingua::EN::Numbers::Easy;
 $loaded = 1;
@@ -23,16 +23,17 @@ my @tests = ([1                    => 'one'],
              [0                    => 'zero'],
              [17                   => 'seventeen'],
              [-23                  => 'negative twenty-three'],
-             ["-23,4"              => 'negative twenty-three point four'],
+             ["-23.4"              => 'negative twenty-three point four'],
 );
 
 
 my $flag = 0;
 foreach my $test (@tests) {
-    print $test -> [1], "|", $N {$test -> [0]}, "\n";
     if ($test -> [1] ne $N {$test -> [0]}) {$flag = 1}
 }
 print $flag ? "not ok 2\n" : "ok 2\n";
+
+our %Nums;
 
 Lingua::EN::Numbers::Easy -> import (American => '%Nums');
 

@@ -1,4 +1,6 @@
 lib/Lingua/EN/Numbers/Easy.pm
+Changes
 MANIFEST
 Makefile.PL
 t/000_tests.t
+README

@@ -1,27 +1,17 @@
 package Lingua::EN::Numbers::Easy;
 
-#
-# $Id: Easy.pm,v 1.2 1999/11/07 15:17:34 abigail Exp abigail $
-#
-# $Log: Easy.pm,v $
-# Revision 1.2  1999/11/07 15:17:34  abigail
-# Worked around a bug (0 -> 'zero') in Lingua::EN::Numbers.
-#
-# Revision 1.1  1999/11/07 14:59:14  abigail
-# Initial revision
-#
-#
-
 use strict;
+use warnings;
+no  warnings 'syntax';
 
-use vars qw /$VERSION %N/;
+our $VERSION = '2009040201';
+our %N;
 
-($VERSION) = '$Revision: 1.2 $' =~ /([\d.]+)/;
+use Lingua::EN::Numbers 1.01;
 
 sub import {
-    my ($pkg, $tag, $hash) = @_;
-    require Lingua::EN::Numbers;
-    Lingua::EN::Numbers -> import ($tag || 'British');
+    my ($pkg, $hash) = grep {$_ ne 'American' and
+                             $_ ne 'British'} @_;
     
     my $callpkg = caller;
     $hash = 'N' unless defined $hash;
@@ -73,18 +63,13 @@ it hard to interpolate them in strings. C<Lingua::EN::Numbers::Easy>
 translates numbers to words using a tied hash, which can be interpolated.
 
 By default, C<Lingua::EN::Numbers::Easy> exports a hash C<%N> to the
-importing package. Also, by default, C<Lingua::EN::Numbers::Easy> uses
-the British mode of C<Lingua::EN::Numbers>. Both defaults can be changed
-by optional arguments to the C<use Lingua::EN::Numbers::Easy;> statement.
+importing package. This can be changed by giving 
+C<< use Lingua::EN::Numbers::Easy >> an argument - this argument is the
+name of the hash that will be used instead:
 
-The first argument determines the parsing mode of C<Lingua::EN::Numbers>.
-Currently, C<Lingua::EN::Numbers> supports I<British> and I<American>.
-The second argument determines the name of the hash in the importing
-package.
+    use Lingua::EN::Numbers::Easy qw /%nums/;
 
-    use Lingua::EN::Numbers::Easy qw /American %nums/;
-
-would use I<American> parsing mode, and C<%nums> as the tied hash.
+would use C<%nums> as the tied hash.
 
 See also the C<Lingua::EN::Numbers> man page.
 
@@ -93,23 +78,25 @@ translated once.
 
 Any other operation on the exported hash than fetches will throw an exception.
 
-=head1 REVISION HISTORY
+=head2 History
 
-    $Log: Easy.pm,v $
-    Revision 1.2  1999/11/07 15:17:34  abigail
-    Worked around a bug (0 -> 'zero') in Lingua::EN::Numbers.
+This module was created at the end of the 20th century, when 
+C<< Lingua::EN::Numbers >> has a clunky, OO interface.
+Nowadays, C<< Lingua::EN::Numbers >> has procedural interface as 
+well, lessening the need for C<< Lingua::EN::Numbers::Easy >>.
 
-    Revision 1.1  1999/11/07 14:59:14  abigail
-    Initial revision
-
+Furthermore, C<< Lingua::EN::Numbers >> no longer supports different
+I<< British >> and I<< American >> modes. Therefore, the support
+for the modes has been dropped in C<< Lingua::EN::Numbers >> as well.
 
 =head1 AUTHOR
 
-This package was written by Abigail, abigail@delanet.com.
+This package was written by Abigail, 
+L<< mailto:lingua-en-numbers-easy@abigail.be >>
 
 =head1 COPYRIGHT and LICENSE
 
-This package is copyright 1999 by Abigail.
+This package is copyright 1999 - 2009 by Abigail.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
