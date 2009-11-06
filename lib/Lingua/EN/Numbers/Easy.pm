@@ -46,7 +46,7 @@ __END__
 
 =head1 NAME
 
-Lingua::EN::Numbers::Easy  --  Hash access to Lingua::EN::Numbers objects.
+Lingua::EN::Numbers::Easy - Hash access to Lingua::EN::Numbers objects.
 
 =head1 SYNOPSIS
 
