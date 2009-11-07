@@ -4,7 +4,7 @@ use strict;
 use warnings;
 no  warnings 'syntax';
 
-our $VERSION = '2009110601';
+our $VERSION = '2009110701';
 our %N;
 
 use Lingua::EN::Numbers 1.01;
