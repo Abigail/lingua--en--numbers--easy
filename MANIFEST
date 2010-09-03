@@ -5,5 +5,4 @@ Makefile.PL
 t/000_tests.t
 t/950_pod.t
 t/960_pod_coverage.t
-t/990_kwalitee.t
 README
