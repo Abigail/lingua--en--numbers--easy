@@ -4,10 +4,10 @@ use strict;
 use warnings;
 no  warnings 'syntax';
 
-our $VERSION = '2009110701';
+our $VERSION = '2014120401';
 our %N;
 
-use Lingua::EN::Numbers 1.01;
+use Lingua::EN::Numbers 1.01 qw [num2en];
 
 sub import {
     my ($pkg, $hash) = grep {$_ ne 'American' and
@@ -27,8 +27,8 @@ sub FETCH {
     my $self  = shift;
     my $value = shift;
     return $self -> {$value} if exists $self -> {$value};
-   (my $n = Lingua::EN::Numbers -> new) -> parse ($value) or return;
-    $self -> {$value} = lc $n -> get_string;
+    my $n = num2en  ($value) or return;
+    $self -> {$value} = lc $n;
 }
 
 sub STORE    {die}
@@ -88,6 +88,11 @@ well, lessening the need for C<< Lingua::EN::Numbers::Easy >>.
 Furthermore, C<< Lingua::EN::Numbers >> no longer supports different
 I<< British >> and I<< American >> modes. Therefore, the support
 for the modes has been dropped in C<< Lingua::EN::Numbers >> as well.
+
+As for 2014, C<< Lingua::EN::Numbers >> does not have an OO interface
+anymore, just a procedurial one. There's probably no need for
+C<< Lingua::EN::Numbers::Easy >> anymore, and the reason it was
+created is now completely gone.
 
 =head1 AUTHOR
 
